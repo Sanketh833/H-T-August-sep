@@ -49,6 +49,7 @@ public class UserController extends BaseController {// accept requests
 	Integer saveUser1(@Valid @RequestBody User user) {
 		userService.save(user);
 		System.out.println("second");
+	
 		return user.getId();
 	}
 }
