@@ -13,11 +13,12 @@ public class UserService {
 	@Autowired
 	UserRepository repository;
 
-	public void save(User user) {
+	public User save(User user) {
 		if (user.getName().equals("Ram"))
 			throw new IllegalArgumentException("message");
 		else
-			repository.save(user);
+			
+		return repository.save(user);
 	}
 
 	public Iterable<User> getUser() {

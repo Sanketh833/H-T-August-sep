@@ -18,7 +18,7 @@ import com.hnt.service.UserService;
 class UserControllerTest {
 
 	@Mock
-	UserService userService;
+	UserService userservice;
 	
 	@InjectMocks
 	UserController usercontroller;
@@ -29,12 +29,9 @@ class UserControllerTest {
 		
 		User user = new User();
 		user.setId(1);
-		when(userService.save(user)).thenReturn(user); 
+		when(userservice.save(user)).thenReturn(user); 
 		Integer savedUserId = usercontroller.saveUser1(user);
 		assertEquals(1, savedUserId);
 	}
-	
-	
-	
-	
 }
+
