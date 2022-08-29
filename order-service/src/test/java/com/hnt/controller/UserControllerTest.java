@@ -19,19 +19,21 @@ class UserControllerTest {
 
 	@Mock
 	UserService userservice;
-	
+
 	@InjectMocks
 	UserController usercontroller;
 
-
 	@Test
 	void testsaveUser() {
-		
+
 		User user = new User();
 		user.setId(1);
-		when(userservice.save(user)).thenReturn(user); 
+		when(userservice.save(user)).thenReturn(user);
 		Integer savedUserId = usercontroller.saveUser1(user);
 		assertEquals(1, savedUserId);
 	}
-}
 
+		
+	
+
+}

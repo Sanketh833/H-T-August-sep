@@ -26,11 +26,20 @@ class UserServiceTest {
 		User user = new User();
 		user.setId(1);
 		when(repository.save(user)).thenReturn(user);
-		userService.save(user);
+				userService.save(user);
 		assertEquals(1, user.getId());
 		
 	 
 	}
+	@Test
+	void testSaveForException() {
+		assertThrows(IllegalArgumentException.class, ()->{
+			User user = new User();
+			user.setName("Ram");
+			userService.save(user);
+		});
+	}
+
 	
  
 
