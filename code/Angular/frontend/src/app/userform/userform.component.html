@@ -3,4 +3,16 @@
     <input [(ngModel)]= 'user.name'>{{user.name}}
   <input [(ngModel)]= 'user.age'>
   <button (click)= 'saveUser()'>Save</button>
+  <ol >
+    <li *ngFor = "let user of users">
+
+      {{user.name}} {{user.age}}
+
+    </li>
+
+  </ol>
+
+
+
+  <userlist></userlist>
   </div>

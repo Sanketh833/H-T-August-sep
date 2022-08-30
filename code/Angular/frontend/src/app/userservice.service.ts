@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 
-const URL ="http://localhost:8090/user"
+const URL = "http://localhost:8090/user"
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +11,15 @@ const URL ="http://localhost:8090/user"
 
 export class UserserviceService {
   save(user: any) {
-    return this.Http.post(URL,user);
+    return this.Http.post(URL, user);
+
   }
 
-  constructor(public Http:HttpClient) { }
+  getUsers()
+  {
+
+    return this.Http.get(URL);
+  }
+
+  constructor(public Http: HttpClient) { }
 }

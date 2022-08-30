@@ -33,25 +33,27 @@ public class UserController extends BaseController {// accept requests
 	Iterable<User> getUser() {
 		return userService.getUser();
 	}
-
-	@PostMapping("/age/{age}/height/{height}") // base path
-	@ResponseStatus(code = HttpStatus.CREATED)
-	ResponseEntity saveUser(@Valid @RequestBody User user, @PathVariable("age") int age, @PathVariable("height") float height) {
-		userService.save(user);
-		System.out.println(height);
-		System.out.println(age);
-		
-		MultiValueMap headers = new LinkedMultiValueMap<String, String>();
-		headers.add("headerfromserver", "success");
-		ResponseEntity responseEntity = new ResponseEntity(headers , HttpStatus.CREATED);
-		return responseEntity;
-	}
+//
+//	@PostMapping("/age/{age}/height/{height}") // base path
+//	@ResponseStatus(code = HttpStatus.CREATED)
+//	ResponseEntity saveUser(@Valid @RequestBody User user, @PathVariable("age") int age, @PathVariable("height") float height) {
+//		userService.save(user);
+//		System.out.println(height);
+//		System.out.println(age);
+//		
+//		MultiValueMap headers = new LinkedMultiValueMap<String, String>();
+//		headers.add("headerfromserver", "success");
+//		ResponseEntity responseEntity = new ResponseEntity(user, headers , HttpStatus.CREATED);
+//		return responseEntity;
+//	}
 
 	@PostMapping
-	Integer saveUser1(@Valid @RequestBody User user) {
+	ResponseEntity saveUser1(@Valid @RequestBody User user) {
 		userService.save(user);
 		System.out.println("second");
-	
-		return user.getId();
+		MultiValueMap headers = new LinkedMultiValueMap<String, String>();
+		headers.add("headerfromserver", "success");
+		ResponseEntity responseEntity = new ResponseEntity(user, headers , HttpStatus.CREATED);
+		return responseEntity;
 	}
 }
