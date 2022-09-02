@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -53,7 +54,13 @@ public class UserController extends BaseController {// accept requests
 		System.out.println("second");
 		MultiValueMap headers = new LinkedMultiValueMap<String, String>();
 		headers.add("headerfromserver", "success");
-		ResponseEntity responseEntity = new ResponseEntity(user, headers , HttpStatus.CREATED);
+		ResponseEntity responseEntity = new ResponseEntity(user, headers, HttpStatus.CREATED);
 		return responseEntity;
+	}
+
+	@DeleteMapping("/{id}")
+	 void DeleteUser(@PathVariable int id) {
+		userService.deleteuser(id);
+
 	}
 }

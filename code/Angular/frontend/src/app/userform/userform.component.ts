@@ -11,17 +11,32 @@ export class UserformComponent implements OnInit {
 
   user = {
     name: 'sanketh',
-    age: 20
+    age: 20,
+    dob: new Date()
   }
 
   users: any[] = [];
   constructor(public userService: UserserviceService) { }
 
-  saveUser() {
+  deleteUser(id:Number){
 
+    const observable=this.userService.deleteUser(id);
+    observable.subscribe((responseBody: any)=>{
+      console.log(responseBody);
+      console.log("deleted")
+    },
+    (error:any)=>{
+      console.log(error);
+      
+    }
+    );
+  }
+
+  saveUser() {
+    this.user.dob = new Date(this.user.dob)
     console.log('clicked');
-    const promise = this.userService.save(this.user);
-    promise.subscribe((responseBody: any) => {
+    const observable = this.userService.save(this.user);
+    observable.subscribe((responseBody: any) => {
       console.log(responseBody);
       this.users.push(responseBody);
     },

@@ -1,5 +1,7 @@
 package com.hnt.entity;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,6 +18,16 @@ public class User {//not a spring bean
 	private String name;
 	@Min(value = 1, message = "age cannot be less than 1")
 	private int age;
+	@NotBlank(message = "date shouldnt be null")
+	private Date date;
+	
+	
+	public Date getDate() {
+		return date;
+	}
+	public void setDate(Date date) {
+		this.date = date;
+	}
 	public String getName() {
 		return name;
 	}

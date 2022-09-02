@@ -17,12 +17,18 @@ public class UserService {
 		if (user.getName().equals("Ram"))
 			throw new IllegalArgumentException("message");
 		else
-			
-		return repository.save(user);
+
+			return repository.save(user);
 	}
 
 	public Iterable<User> getUser() {
 		return repository.findAll();
 	}
+
+	public void deleteuser(int id) {
+
+		 repository.deleteById(id);
+
+		}
 
 }

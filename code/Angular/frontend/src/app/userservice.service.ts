@@ -15,6 +15,10 @@ export class UserserviceService {
 
   }
 
+  deleteUser(id:any){
+    return this.Http.delete(URL+"/"+id);
+  }
+
   getUsers()
   {
 
